@@ -3,7 +3,7 @@
    Для обновления установленного приложения нужно опубликовать новую версию и перезапустить приложение. */
 'use strict';
 
-var CACHE_VERSION = '5words-v1';
+var CACHE_VERSION = '5words-v2';
 var CORE_ASSETS = [
   './',
   './index.html',
