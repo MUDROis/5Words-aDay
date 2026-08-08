@@ -7,7 +7,13 @@
 <meta name="theme-color" content="#B8D6FF">
 <meta name="description" content="Английский для детей: 5 новых слов в день, 52 недели. Карточки, прописи, диктант и сопоставление — учи слова с 5 Words a Day!">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" href="logo.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="5 Words">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="5 Words a Day">
 <meta property="og:description" content="Английский для детей: 5 новых слов в день, 52 недели. Карточки, прописи, диктант и сопоставление — учи слова с 5 Words a Day!">
@@ -216,5 +222,14 @@
 <script src="word-normalize.js"></script>
 <script src="auth.js"></script>
 <script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function (err) {
+      console.warn('Service Worker не зарегистрирован:', err);
+    });
+  });
+}
+</script>
 </body>
 </html>
