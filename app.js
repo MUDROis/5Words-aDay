@@ -173,8 +173,14 @@ function renderHome(){
     card.setAttribute('data-theme', themeGroup(w));
     let dots = '';
     for(let d = 1; d <= 5; d++) dots += '<span class="dot' + (getDayData(w, d).done ? ' done' : '') + '"></span>';
+    const wk = WEEKS[w - 1];
+    const themes = (wk && Array.isArray(wk.theme)) ? wk.theme : [];
+    const themesHtml = themes.length
+      ? '<ul class="week-themes">' + themes.map(function(t){ return '<li>' + t + '</li>'; }).join('') + '</ul>'
+      : '';
     card.innerHTML =
       '<div class="week-num">Неделя ' + w + '</div>' +
+      themesHtml +
       '<div class="week-dots">' + dots + '</div>' +
       '<div class="week-badge">' + (open ? (doneInWeek === 5 ? '🏆' : '⭐ ' + starsInWeek) : '🔒') + '</div>';
     card.onclick = (function(ww){ return function(){ if(!denied && ww <= openMax) openWeek(ww); else showLockedWeek(ww); }; })(w);
